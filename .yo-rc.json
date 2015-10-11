@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "krysBurger",
+    "packageName": "com.jeanmile",
+    "packageFolder": "com/jeanmile",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useSass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": false,
+    "rememberMeKey": "dc7482d01537c288f12858c8d420c3f78a7cf497"
+  }
+}
