@@ -1,0 +1,31 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "purchase",
+            "otherEntityName": "purchase",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "food"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "price",
+            "fieldType": "Float"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "comment",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151011225004",
+    "dto": "no",
+    "pagination": "no"
+}
