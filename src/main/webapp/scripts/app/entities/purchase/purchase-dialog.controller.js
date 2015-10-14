@@ -30,4 +30,8 @@ angular.module('krysBurgerApp').controller('PurchaseDialogController',
         $scope.clear = function() {
             $modalInstance.dismiss('cancel');
         };
+
+        $scope.purchase = {
+            date: new Date()
+        };
 }]);

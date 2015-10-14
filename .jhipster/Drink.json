@@ -18,6 +18,11 @@
             "fieldId": 2,
             "fieldName": "price",
             "fieldType": "Float"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "photo",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20151011225145",

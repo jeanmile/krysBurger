@@ -54,6 +54,7 @@ angular.module('krysBurgerApp')
                                 return {
                                     name: null,
                                     price: null,
+                                    photo: null,
                                     id: null
                                 };
                             }

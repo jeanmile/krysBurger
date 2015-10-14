@@ -67,7 +67,7 @@ class DrinkGatlingTest extends Simulation {
             .exec(http("Create new drink")
             .post("/api/drinks")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "price":null}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "price":null, "photo":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_drink_url")))
             .pause(10)

@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - "0.12"
+  - '0.12'
 sudo: false
-before_install: 
+before_install:
   - npm install -g grunt-cli
   - npm install -g bower
-install: 
+install:
   - npm install
   - bower install
 before_script: grunt build

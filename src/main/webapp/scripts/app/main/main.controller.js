@@ -6,4 +6,7 @@ angular.module('krysBurgerApp')
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
+        $scope.principal = {
+            date: new Date()
+        };
     });

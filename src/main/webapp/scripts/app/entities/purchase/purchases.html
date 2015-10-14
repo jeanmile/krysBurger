@@ -53,7 +53,7 @@
             <tbody>
                 <tr ng-repeat="purchase in purchases track by purchase.id">
                     <td><a ui-sref="purchase.detail({id:purchase.id})">{{purchase.id}}</a></td>
-                    <td>{{purchase.date}}</td>
+                    <td>{{purchase.date | date:'dd/MM/yy'}}</td>
                     <td>{{purchase.fries}}</td>
                     <td>{{purchase.delivery}}</td>
                     <td>

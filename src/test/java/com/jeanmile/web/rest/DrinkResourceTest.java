@@ -46,6 +46,8 @@ public class DrinkResourceTest {
 
     private static final Float DEFAULT_PRICE = 1F;
     private static final Float UPDATED_PRICE = 2F;
+    private static final String DEFAULT_PHOTO = "AAAAA";
+    private static final String UPDATED_PHOTO = "BBBBB";
 
     @Inject
     private DrinkRepository drinkRepository;
@@ -75,6 +77,7 @@ public class DrinkResourceTest {
         drink = new Drink();
         drink.setName(DEFAULT_NAME);
         drink.setPrice(DEFAULT_PRICE);
+        drink.setPhoto(DEFAULT_PHOTO);
     }
 
     @Test
@@ -95,6 +98,7 @@ public class DrinkResourceTest {
         Drink testDrink = drinks.get(drinks.size() - 1);
         assertThat(testDrink.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testDrink.getPrice()).isEqualTo(DEFAULT_PRICE);
+        assertThat(testDrink.getPhoto()).isEqualTo(DEFAULT_PHOTO);
     }
 
     @Test
@@ -109,7 +113,8 @@ public class DrinkResourceTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(drink.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())));
+                .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
+                .andExpect(jsonPath("$.[*].photo").value(hasItem(DEFAULT_PHOTO.toString())));
     }
 
     @Test
@@ -124,7 +129,8 @@ public class DrinkResourceTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(drink.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()));
+            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
+            .andExpect(jsonPath("$.photo").value(DEFAULT_PHOTO.toString()));
     }
 
     @Test
@@ -146,6 +152,7 @@ public class DrinkResourceTest {
         // Update the drink
         drink.setName(UPDATED_NAME);
         drink.setPrice(UPDATED_PRICE);
+        drink.setPhoto(UPDATED_PHOTO);
 
         restDrinkMockMvc.perform(put("/api/drinks")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -158,6 +165,7 @@ public class DrinkResourceTest {
         Drink testDrink = drinks.get(drinks.size() - 1);
         assertThat(testDrink.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testDrink.getPrice()).isEqualTo(UPDATED_PRICE);
+        assertThat(testDrink.getPhoto()).isEqualTo(UPDATED_PHOTO);
     }
 
     @Test

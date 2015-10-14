@@ -43,6 +43,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Price</th>
+                    <th>Photo</th>
                     <th></th>
                 </tr>
             </thead>
@@ -51,6 +52,7 @@
                     <td><a ui-sref="drink.detail({id:drink.id})">{{drink.id}}</a></td>
                     <td>{{drink.name}}</td>
                     <td>{{drink.price}}</td>
+                    <td>{{drink.photo}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="drink.detail({id:drink.id})"

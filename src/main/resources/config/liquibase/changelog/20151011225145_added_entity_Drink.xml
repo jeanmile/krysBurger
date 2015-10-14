@@ -24,6 +24,7 @@
             </column>
             <column name="name" type="varchar(255)"/>
             <column name="price" type="${floatType}"/>
+            <column name="photo" type="varchar(255)"/>
         </createTable>
         
     </changeSet>

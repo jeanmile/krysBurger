@@ -25,6 +25,9 @@ public class Drink implements Serializable {
     
     @Column(name = "price")
     private Float price;
+    
+    @Column(name = "photo")
+    private String photo;
 
     @OneToMany(mappedBy = "drink")
     @JsonIgnore
@@ -52,6 +55,14 @@ public class Drink implements Serializable {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Set<Purchase> getPurchases() {
@@ -89,6 +100,7 @@ public class Drink implements Serializable {
                 "id=" + id +
                 ", name='" + name + "'" +
                 ", price='" + price + "'" +
+                ", photo='" + photo + "'" +
                 '}';
     }
 }

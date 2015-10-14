@@ -35,6 +35,7 @@ angular.module('krysBurgerApp')
             $scope.drink = {
                 name: null,
                 price: null,
+                photo: null,
                 id: null
             };
         };
