@@ -9,10 +9,10 @@
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
         <!-- TODO : Afficher uniquement avec profil admin -->
-        <div class="form-group">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id" ng-model="purchase.id" readonly>
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label for="id">ID</label>-->
+            <!--<input type="text" class="form-control" id="id" name="id" ng-model="purchase.id" readonly>-->
+        <!--</div>-->
         <div class="form-group" >
             <label for="field_date">Date</label>
             <input type="date" id="field_date" class="form-control" name="date" ng-model="purchase.date">
@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="field_fries">Frites</label>
             <input type="checkbox" class="form-control" name="fries" id="field_fries"
-                    ng-model="purchase.fries" ng-checked="true">
+                    ng-model="purchase.fries" ng-init="purchase.fries=true">
         </div>
         <div class="form-group">
             <label for="field_food">Burger</label>
@@ -35,18 +35,13 @@
                 <div ng-repeat="drink in drinks" class="col-xs-3 col-md-2">
                     <label class="text-center radio-thumbnail">
                         <input id="{{drink.name}}" type="radio" class="form-control" name="drink"
-                               ng-model="purchase.drink" ng-value="drink" />
+                               ng-model="purchase.drink" ng-value="drink"/>
                             <span class="thumbnail">
                                 <img ng-src="assets/images/{{drink.photo}}" alt="{{drink.name}}"/>
                             </span>
                     </label>
                 </div>
             </div>
-        <div class="form-group">
-            <label for="field_user">user</label>
-            <select class="form-control" id="field_user" name="user" ng-model="purchase.user" >
-            </select>
-        </div>
         <div class="form-group">
             <label for="field_delivery">Livraison</label>
             <input type="checkbox" class="form-control" name="delivery" id="field_delivery" ng-model="purchase.delivery">
