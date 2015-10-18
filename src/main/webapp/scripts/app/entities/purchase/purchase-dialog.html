@@ -11,42 +11,44 @@
         <!-- TODO : Afficher uniquement avec profil admin -->
         <div class="form-group">
             <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="purchase.id" readonly>
+            <input type="text" class="form-control" id="id" name="id" ng-model="purchase.id" readonly>
         </div>
         <div class="form-group" >
             <label for="field_date">Date</label>
             <input type="date" id="field_date" class="form-control" name="date" ng-model="purchase.date">
         </div>
         <div class="form-group">
-            <label for="field_fries">Fries</label>
+            <label for="field_fries">Frites</label>
             <input type="checkbox" class="form-control" name="fries" id="field_fries"
                     ng-model="purchase.fries" ng-checked="true">
         </div>
         <div class="form-group">
-            <label for="field_food">food</label>
+            <label for="field_food">Burger</label>
             <select class="form-control" id="field_food" name="food" ng-model="purchase.food"
                     ng-options="food as food.name for food in foods track by food.id">
                 <option value=""></option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="field_drink">Boisson</label>
-            <div class="row" id="field_drink" ng-model="purchase.drink" name="drink">
-                <div ng-repeat="drink in drinks" class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img ng-src="assets/images/{{drink.photo}}" alt="{{drink.name}}">
-                    </a>
+        <div >
+            <label>Boisson</label>
+            <div class="row">
+                <div ng-repeat="drink in drinks" class="col-xs-3 col-md-2">
+                    <label class="text-center radio-thumbnail">
+                        <input id="{{drink.name}}" type="radio" class="form-control" name="drink"
+                               ng-model="purchase.drink" ng-value="drink" />
+                            <span class="thumbnail">
+                                <img ng-src="assets/images/{{drink.photo}}" alt="{{drink.name}}"/>
+                            </span>
+                    </label>
                 </div>
             </div>
         <div class="form-group">
             <label for="field_user">user</label>
-            <select class="form-control" id="field_user" name="user" ng-model="purchase.user" ng-options="user as user.login for user in users track by user.id">
-                <option value=""></option>
+            <select class="form-control" id="field_user" name="user" ng-model="purchase.user" >
             </select>
         </div>
         <div class="form-group">
-            <label for="field_delivery">Delivery</label>
+            <label for="field_delivery">Livraison</label>
             <input type="checkbox" class="form-control" name="delivery" id="field_delivery" ng-model="purchase.delivery">
         </div>
     </div>

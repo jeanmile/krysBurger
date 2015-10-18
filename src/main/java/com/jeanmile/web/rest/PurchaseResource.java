@@ -2,7 +2,11 @@ package com.jeanmile.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.jeanmile.domain.Purchase;
+import com.jeanmile.domain.User;
 import com.jeanmile.repository.PurchaseRepository;
+import com.jeanmile.repository.UserRepository;
+import com.jeanmile.security.SecurityUtils;
+import com.jeanmile.service.UserService;
 import com.jeanmile.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +34,9 @@ public class PurchaseResource {
     @Inject
     private PurchaseRepository purchaseRepository;
 
+    @Inject
+    private UserRepository userRepository;
+
     /**
      * POST  /purchases -> Create a new purchase.
      */
@@ -42,6 +49,9 @@ public class PurchaseResource {
         if (purchase.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new purchase cannot already have an ID").body(null);
         }
+        // Set current user.
+        Optional<User> currentUser = userRepository.findOneByLogin(SecurityUtils.getCurrentLogin());
+        purchase.setUser(currentUser.get());
         Purchase result = purchaseRepository.save(purchase);
         return ResponseEntity.created(new URI("/api/purchases/" + result.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert("purchase", result.getId().toString()))
