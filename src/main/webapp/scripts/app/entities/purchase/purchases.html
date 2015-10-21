@@ -40,7 +40,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Date</th>
                     <th>Fries</th>
                     <th>Delivery</th>
@@ -52,7 +51,6 @@
             </thead>
             <tbody>
                 <tr ng-repeat="purchase in purchases track by purchase.id">
-                    <td><a ui-sref="purchase.detail({id:purchase.id})">{{purchase.id}}</a></td>
                     <td>{{purchase.date | date:'dd/MM/yy'}}</td>
                     <td>{{purchase.fries}}</td>
                     <td>{{purchase.delivery}}</td>
@@ -76,7 +74,7 @@
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
                         </button>
-                        <button type="submit"
+                        <button type="submit" has-authority="ROLE_ADMIN"
                                 ng-click="delete(purchase.id)"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
