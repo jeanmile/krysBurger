@@ -27,4 +27,22 @@ angular.module('krysBurgerApp')
                 }
             }
         });
+    })
+    .factory('PurchaseService', function ($http) {
+        return {
+            findByDates: function (fromDate, toDate) {
+                var formatDate =  function (dateToFormat) {
+                    if (dateToFormat !== undefined && !angular.isString(dateToFormat)) {
+                        return dateToFormat.getDay() + '/' + dateToFormat.getMonth() + '/' + dateToFormat.getFullYear();
+                    }
+                    return dateToFormat;
+                };
+
+                return $http.get('api/purchases/', {params: {fromDate: formatDate(fromDate),
+                                                            toDate: formatDate(toDate)}})
+                            .then(function (response) {
+                    return response.data;
+                });
+            }
+        };
     });

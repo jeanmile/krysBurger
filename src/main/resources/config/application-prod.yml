@@ -15,8 +15,8 @@ spring:
         active: prod
     datasource:
         driver-class-name: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
-        url: jdbc:mysql://localhost:3306/krysBurger?useUnicode=true&characterEncoding=utf8
-        name: 
+        url: jdbc:mysql://172.17.0.105:3306/krysBurger?useUnicode=true&characterEncoding=utf8
+        name:
         username: root
         password:
     jpa:

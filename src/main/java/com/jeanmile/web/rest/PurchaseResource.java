@@ -3,11 +3,12 @@ package com.jeanmile.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.jeanmile.domain.Purchase;
 import com.jeanmile.domain.User;
-import com.jeanmile.repository.PersistentTokenRepository;
 import com.jeanmile.repository.PurchaseRepository;
 import com.jeanmile.repository.UserRepository;
 import com.jeanmile.security.SecurityUtils;
+import com.jeanmile.service.PurchaseService;
 import com.jeanmile.web.rest.util.HeaderUtil;
+import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -36,8 +37,16 @@ public class PurchaseResource {
     @Inject
     private UserRepository userRepository;
 
+    private PurchaseService purchaseService;
+
     @Inject
-    private PersistentTokenRepository persistentTokenRepository;
+    public PurchaseResource(PurchaseService auditEventService) {
+        this.purchaseService = auditEventService;
+    }
+
+    public PurchaseResource() {
+
+    }
 
     /**
      * POST  /purchases -> Create a new purchase.
@@ -120,5 +129,14 @@ public class PurchaseResource {
         log.debug("REST request to delete Purchase : {}", id);
         purchaseRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("purchase", id.toString())).build();
+    }
+
+    @RequestMapping(value = "/purchases",
+        method = RequestMethod.GET,
+        params = {"fromDate", "toDate"})
+    public List<Purchase> getByDates(@RequestParam(value = "fromDate") LocalDate fromDate,
+                                     @RequestParam(value = "toDate") LocalDate toDate) {
+        log.debug("REST request to get Purchases by date : {0 {1}", fromDate, toDate);
+        return this.purchaseService.findByDates(fromDate, toDate);
     }
 }

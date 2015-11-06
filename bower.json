@@ -1,6 +1,6 @@
 {
     "name": "krysBurger",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "appPath": "src/main/webapp",
     "testPath": "src/test/javascript/spec",
     "dependencies": {
@@ -19,7 +19,8 @@
         "modernizr": "2.8.3",
         "ng-file-upload": "7.0.17",
         "ngInfiniteScroll": "1.2.0",
-        "swagger-ui": "2.1.2"
+        "swagger-ui": "2.1.2",
+        "requirejs": "latest"
     },
     "devDependencies": {
         "angular-mocks": "1.4.5",
