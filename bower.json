@@ -20,7 +20,8 @@
         "ng-file-upload": "7.0.17",
         "ngInfiniteScroll": "1.2.0",
         "swagger-ui": "2.1.2",
-        "requirejs": "latest"
+        "requirejs": "latest",
+        "bootswatch-dist": "flatly"
     },
     "devDependencies": {
         "angular-mocks": "1.4.5",
