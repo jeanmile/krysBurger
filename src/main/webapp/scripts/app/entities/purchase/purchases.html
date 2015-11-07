@@ -1,10 +1,9 @@
 <div>
-    <h2>Commande</h2>
+    <h2>Commandes</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
-            <div class="col-md-5 col-sm-5">
-                <h4>Filter by date</h4>
+            <div class="col-md-4 col-sm-4">
                 <p class="input-group">
                     <span class="input-group-addon">De</span>
                     <input type="date" class="input-sm form-control" name="start" ng-model="fromDate" ng-change="onChangeDate()" required/>
@@ -16,7 +15,7 @@
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="purchase.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Purchase</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span>Création d'une nouvelle commande</span>
                 </button>
             </div>
         </div>
@@ -61,7 +60,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="purchase in purchases | filter:filter " ng-hide="filter.filtered">
+                <tr ng-repeat="purchase in purchases | filter:filter" ng-hide="filter.filtered">
                     <td>{{purchase.date | date:'dd/MM/yy'}}</td>
                     <td>{{purchase.fries}}</td>
                     <td>{{purchase.delivery}}</td>

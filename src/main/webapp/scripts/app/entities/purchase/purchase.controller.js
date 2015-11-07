@@ -4,13 +4,6 @@ angular.module('krysBurgerApp')
     .controller('PurchaseController', function ($scope, $filter, Purchase, PurchaseService) {
         $scope.purchases = [];
 
-        $scope.loadAll = function() {
-            Purchase.query(function(result) {
-               $scope.purchases = result;
-            });
-        };
-        $scope.loadAll();
-
         $scope.delete = function (id) {
             Purchase.get({id: id}, function(result) {
                 $scope.purchase = result;
@@ -27,11 +20,6 @@ angular.module('krysBurgerApp')
                 });
         };
 
-        $scope.refresh = function () {
-            $scope.loadAll();
-            $scope.clear();
-        };
-
         $scope.clear = function () {
             $scope.purchase = {
                 date: null,
@@ -42,10 +30,9 @@ angular.module('krysBurgerApp')
         };
 
         $scope.today = function () {
-            // Today + 1 day - needed if the current day must be included
             var today = new Date();
-            $scope.fromDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-            $scope.toDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+            $scope.fromDate = today;
+            $scope.toDate = today;
         };
 
         $scope.onChangeDate = function () {
