@@ -4,7 +4,7 @@
             <span class="hipster img-responsive img-rounded"></span>
         </div>
         <div class="col-md-8">
-            <h1>Bonjour, commande du {{principal.date | date:'dd/MM/yy'}} !</h1>
+            <h1>Bonjour, commande du {{ principal.today | date:'dd/MM/yy'}} !</h1>
 
             <div id="welcome" ng-switch="isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true">
@@ -14,12 +14,32 @@
                 <!-- TODO : afficher uniquement si une commande existe -->
                 <div ng-switch-when="true">
                     <h3>Votre commande du jour :</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>food</th>
+                                <th>drink</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="purchase in purchases">
+                                <td>
+                                    <a ui-sref="food.detail({id:purchase.food.id})">{{purchase.food.name}}</a>
+                                </td>
+                                <td>
+                                    <a ui-sref="drink.detail({id:purchase.drink.id})">{{purchase.drink.name}}</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
             <h2><a ui-sref="purchase"><span><i class="fa fa-cutlery"></i> Commander</span></a></h2>
             <p>
-             <span>TODO : mettre le flux actu facebook krysBurger</span>
+             <!-- // TODO : mettre le flux actu facebook krysBurger -->
             </p>
         </div>
     </div>

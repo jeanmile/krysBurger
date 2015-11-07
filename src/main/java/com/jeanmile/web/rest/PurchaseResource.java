@@ -37,16 +37,8 @@ public class PurchaseResource {
     @Inject
     private UserRepository userRepository;
 
-    private PurchaseService purchaseService;
-
     @Inject
-    public PurchaseResource(PurchaseService auditEventService) {
-        this.purchaseService = auditEventService;
-    }
-
-    public PurchaseResource() {
-
-    }
+    private PurchaseService purchaseService;
 
     /**
      * POST  /purchases -> Create a new purchase.
@@ -131,6 +123,9 @@ public class PurchaseResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("purchase", id.toString())).build();
     }
 
+    /**
+     * GET purchases?fromDate=07/11/2015&toDate=07/11/2015 -> get purchases fromDate toDate
+     */
     @RequestMapping(value = "/purchases",
         method = RequestMethod.GET,
         params = {"fromDate", "toDate"})
@@ -138,5 +133,16 @@ public class PurchaseResource {
                                      @RequestParam(value = "toDate") LocalDate toDate) {
         log.debug("REST request to get Purchases by date : {0 {1}", fromDate, toDate);
         return this.purchaseService.findByDates(fromDate, toDate);
+    }
+
+    /**
+     * GET purchases/1?atDate=18/10/2015 -> get purchase at Date for current user.
+     */
+    @RequestMapping(value = "/purchases/{user}",
+        method = RequestMethod.GET,
+        params = {"atDate"})
+    public List<Purchase> getByUser(@RequestParam(value = "atDate") LocalDate atDate) {
+        log.debug("REST request to get Purchases at date : {0}", atDate);
+        return this.purchaseService.findByUserIsCurrentUserAndByDate(atDate);
     }
 }

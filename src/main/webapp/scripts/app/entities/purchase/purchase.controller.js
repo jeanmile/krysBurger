@@ -42,7 +42,6 @@ angular.module('krysBurgerApp')
 
             PurchaseService.findByDates(fromDate, toDate).then(function (data) {
                 $scope.purchases = data;
-
             });
         };
 

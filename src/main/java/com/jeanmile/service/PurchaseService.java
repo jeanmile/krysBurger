@@ -18,4 +18,8 @@ public class PurchaseService {
     public List<Purchase> findByDates(LocalDate fromDate, LocalDate toDate) {
         return purchaseRepository.findAllByDateBetween(fromDate, toDate);
     }
+
+    public List<Purchase> findByUserIsCurrentUserAndByDate(LocalDate today) {
+        return purchaseRepository.findByUserIsCurrentUserAndByDate(today);
+    }
 }

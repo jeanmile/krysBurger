@@ -43,6 +43,20 @@ angular.module('krysBurgerApp')
                             .then(function (response) {
                     return response.data;
                 });
+            },
+            findByUserIsCurrentUserAndDateNow: function () {
+                var formatDate =  function (dateToFormat) {
+                    if (dateToFormat !== undefined && !angular.isString(dateToFormat)) {
+                        return dateToFormat.getDay() + '/' + dateToFormat.getMonth() + '/' + dateToFormat.getFullYear();
+                    }
+                    return dateToFormat;
+                };
+                var atDate = new Date();
+
+                return $http.get('api/purchases/1/', {params: {atDate: formatDate(atDate)}})
+                    .then(function (response) {
+                        return response.data;
+                    });
             }
         };
     });
