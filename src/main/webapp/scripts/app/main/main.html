@@ -11,28 +11,32 @@
                     You are logged in as user "{{account.login}}".
                 </div>
 
-                <!-- TODO : afficher uniquement si une commande existe -->
                 <div ng-switch-when="true">
-                    <h3>Votre commande du jour :</h3>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>food</th>
-                                <th>drink</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="purchase in purchases">
-                                <td>
-                                    <a ui-sref="food.detail({id:purchase.food.id})">{{purchase.food.name}}</a>
-                                </td>
-                                <td>
-                                    <a ui-sref="drink.detail({id:purchase.drink.id})">{{purchase.drink.name}}</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Votre commande du jour :</div>
+                        <div class="panel-body">
+                            <h4 ng-show="!purchases.length">Aucune commande</h4>
+                            <div ng-show="purchases.length" class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Burger</th>
+                                        <th>Boisson</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="purchase in purchases">
+                                        <td>
+                                            <a ui-sref="food.detail({id:purchase.food.id})">{{purchase.food.name}}</a>
+                                        </td>
+                                        <td>
+                                            <a ui-sref="drink.detail({id:purchase.drink.id})">{{purchase.drink.name}}</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

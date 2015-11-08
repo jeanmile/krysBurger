@@ -138,7 +138,7 @@ public class PurchaseResource {
     /**
      * GET purchases/1?atDate=18/10/2015 -> get purchase at Date for current user.
      */
-    @RequestMapping(value = "/purchases/{user}",
+    @RequestMapping(value = "/purchases/me",
         method = RequestMethod.GET,
         params = {"atDate"})
     public List<Purchase> getByUser(@RequestParam(value = "atDate") LocalDate atDate) {

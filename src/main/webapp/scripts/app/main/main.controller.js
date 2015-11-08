@@ -9,6 +9,10 @@ angular.module('krysBurgerApp')
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
 
+        $scope.principal = {
+            today: new Date()
+        };
+
         $scope.loadMyPurchase = function() {
             PurchaseService.findByUserIsCurrentUserAndDateNow().then(function (data) {
                 $scope.purchases = data;
@@ -17,7 +21,4 @@ angular.module('krysBurgerApp')
 
         $scope.loadMyPurchase();
 
-        $scope.principal = {
-            today: new Date()
-        };
     });

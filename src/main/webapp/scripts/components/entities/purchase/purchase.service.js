@@ -47,13 +47,12 @@ angular.module('krysBurgerApp')
             findByUserIsCurrentUserAndDateNow: function () {
                 var formatDate =  function (dateToFormat) {
                     if (dateToFormat !== undefined && !angular.isString(dateToFormat)) {
-                        return dateToFormat.getDay() + '/' + dateToFormat.getMonth() + '/' + dateToFormat.getFullYear();
+                        return dateToFormat.getDate() + '/' + (dateToFormat.getMonth()+1) + '/' + dateToFormat.getFullYear();
                     }
                     return dateToFormat;
                 };
-                var atDate = new Date();
 
-                return $http.get('api/purchases/1/', {params: {atDate: formatDate(atDate)}})
+                return $http.get('api/purchases/me', {params: {atDate: formatDate(new Date)}})
                     .then(function (response) {
                         return response.data;
                     });
