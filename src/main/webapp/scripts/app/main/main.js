@@ -7,8 +7,7 @@ angular.module('krysBurgerApp')
                 parent: 'site',
                 url: '/',
                 data: {
-                    authorities: ['ROLE_USER'],
-                    pageTitle: 'Home'
+                    authorities: []
                 },
                 views: {
                     'content@': {

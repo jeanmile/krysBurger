@@ -14,9 +14,11 @@ angular.module('krysBurgerApp')
         };
 
         $scope.loadMyPurchase = function() {
-            PurchaseService.findByUserIsCurrentUserAndDateNow().then(function (data) {
-                $scope.purchases = data;
-            });
+            if ($scope.isAuthenticated) {
+                PurchaseService.findByUserIsCurrentUserAndDateNow().then(function (data) {
+                    $scope.purchases = data;
+                });
+            }
         };
 
         $scope.loadMyPurchase();
