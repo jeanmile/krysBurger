@@ -1,17 +1,15 @@
 'use strict';
 
 angular.module('krysBurgerApp')
-    .controller('MainController', function ($scope, Principal, Purchase, PurchaseService) {
+    .controller('MainController', function ($scope, Principal, Purchase, PurchaseService, FacebookService) {
+        $scope.today = new Date();
+
         Principal.identity().then(function(account) {
             $scope.purchases = [];
 
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
-
-        $scope.principal = {
-            today: new Date()
-        };
 
         $scope.loadMyPurchase = function() {
             if ($scope.isAuthenticated) {
@@ -21,6 +19,15 @@ angular.module('krysBurgerApp')
             }
         };
 
+        $scope.getMyLastName = function() {
+            FacebookService.getMyLastName()
+                .then(function(response) {
+                    $scope.about = response.last_name;
+                }
+            );
+        };
+
+        $scope.getMyLastName();
         $scope.loadMyPurchase();
 
     });

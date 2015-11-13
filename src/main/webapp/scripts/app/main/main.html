@@ -4,8 +4,9 @@
             <span class="hipster img-responsive img-rounded"></span>
         </div>
         <div class="col-md-8">
-            <h1>Bonjour, commande du {{ principal.today | date:'dd/MM/yy'}} !</h1>
+            <h1>Bonjour, commande du {{ today | date:'dd/MM/yy'}} !</h1>
 
+            <h1>About : {{ about }}</h1>
             <div id="welcome" ng-switch="isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true">
                     You are logged in as user "{{account.login}}".

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('krysBurgerApp', ['LocalStorageModule', 
+angular.module('krysBurgerApp', ['LocalStorageModule',
                'ui.bootstrap', // for modal dialogs
     'ngResource', 'ui.router', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload', 'infinite-scroll'])
 
@@ -14,7 +14,7 @@ angular.module('krysBurgerApp', ['LocalStorageModule',
             if (Principal.isIdentityResolved()) {
                 Auth.authorize();
             }
-            
+
         });
 
         $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
@@ -43,6 +43,17 @@ angular.module('krysBurgerApp', ['LocalStorageModule',
             } else {
                 $state.go($rootScope.previousStateName, $rootScope.previousStateParams);
             }
+        };
+
+        // init facebook graph API.
+        $window.fbAsyncInit = function() {
+            FB.init({
+                appId: '404695739731135',
+                status: true,
+                cookie: true,
+                xfbml: true,
+                version: 'v2.4'
+            });
         };
     })
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider,  httpRequestInterceptorCacheBusterProvider) {
@@ -75,5 +86,5 @@ angular.module('krysBurgerApp', ['LocalStorageModule',
         $httpProvider.interceptors.push('errorHandlerInterceptor');
         $httpProvider.interceptors.push('authExpiredInterceptor');
         $httpProvider.interceptors.push('notificationInterceptor');
-        
+
     });
