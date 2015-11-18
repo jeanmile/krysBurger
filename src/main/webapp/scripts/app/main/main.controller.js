@@ -14,7 +14,7 @@ angular.module('krysBurgerApp')
         };
 
         $scope.loadMyPurchase = function() {
-            if ($scope.isAuthenticated) {
+            if (Principal.isAuthenticated()) {
                 PurchaseService.findByUserIsCurrentUserAndDateNow().then(function (data) {
                     $scope.purchases = data;
                 });
