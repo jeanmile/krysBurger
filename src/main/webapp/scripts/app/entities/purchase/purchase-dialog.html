@@ -4,18 +4,27 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myPurchaseLabel">Create or edit a Purchase</h4>
+        <h4 class="modal-title" id="myPurchaseLabel">Création ou edition d'une commande</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
-        <!-- TODO : Afficher uniquement avec profil admin -->
-        <!--<div class="form-group">-->
-            <!--<label for="id">ID</label>-->
-            <!--<input type="text" class="form-control" id="id" name="id" ng-model="purchase.id" readonly>-->
-        <!--</div>-->
-        <div class="form-group" >
+        <div class="form-group">
             <label for="field_date">Date</label>
-            <input type="date" id="field_date" class="form-control" name="date" ng-model="purchase.date">
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="input-group">
+                        <input type="date" id="field_date" class="form-control" ng-model="purchase.date"
+                               uib-datepicker-popup is-open="opened"
+                               placeholder="dd/MM/yyy" min="2015-10-01" max="2015-12-31"
+                               name="date" />
+                        <!--<span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event)">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>-->
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="field_fries">Frites</label>
@@ -49,10 +58,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Annuler</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Valider</span>
         </button>
     </div>
 </form>
