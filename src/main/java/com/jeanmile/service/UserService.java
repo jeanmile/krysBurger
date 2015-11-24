@@ -1,7 +1,6 @@
 package com.jeanmile.service;
 
 import com.jeanmile.domain.Authority;
-import com.jeanmile.domain.PersistentToken;
 import com.jeanmile.domain.User;
 import com.jeanmile.repository.AuthorityRepository;
 import com.jeanmile.repository.PersistentTokenRepository;
@@ -100,8 +99,8 @@ public class UserService {
         newUser.setLastName(lastName);
         newUser.setEmail(email);
         newUser.setLangKey(langKey);
-        // new user is not active
-        newUser.setActivated(false);
+        // activate new user
+        newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
